@@ -1,0 +1,135 @@
+[
+  {
+    "firstname": "Karuranga",
+    "lastname": "Eugene",
+    "phonenumber": "+1 (941) 542-3367",
+    "location": "Marriot Hotel",
+    "distance_within_location": 9
+  },
+  {
+    "firstname": "Ndekezi",
+    "lastname": "Fally",
+    "phonenumber": "+1 (935) 585-2733",
+    "location": "Remera",
+    "distance_within_location": 3
+  },
+  {
+    "firstname": "Uwilingiyimana",
+    "lastname": "Leonard",
+    "phonenumber": "+1 (807) 474-3723",
+    "location": "Marriot Hotel",
+    "distance_within_location": 8
+  },
+  {
+    "firstname": "Nkusi",
+    "lastname": "Olivier",
+    "phonenumber": "+1 (843) 520-2673",
+    "location": "KCT",
+    "distance_within_location": 3
+  },
+  {
+    "firstname": "Kamanzi",
+    "lastname": "Patrick",
+    "phonenumber": "+1 (855) 521-3252",
+    "location": "ULK",
+    "distance_within_location": 4
+  },
+  {
+    "firstname": "Umutoni",
+    "lastname": "Adeline",
+    "phonenumber": "+1 (913) 460-3970",
+    "location": "Kicukiro",
+    "distance_within_location": 7
+  },
+  {
+    "firstname": "Umulisa",
+    "lastname": "Joy",
+    "phonenumber": "+1 (970) 494-2510",
+    "location": "Muhima",
+    "distance_within_location": 6
+  },
+  {
+    "firstname": "Kantarama",
+    "lastname": "Liliana",
+    "phonenumber": "+1 (863) 544-2692",
+    "location": "Gikondo",
+    "distance_within_location": 4
+  },
+  {
+    "firstname": "Bullock",
+    "lastname": "Chang",
+    "phonenumber": "+1 (984) 526-2908",
+    "location": "ULK",
+    "distance_within_location": 6
+  },
+  {
+    "firstname": "Kaufman",
+    "lastname": "Carney",
+    "phonenumber": "+1 (816) 537-2733",
+    "location": "Gikondo",
+    "distance_within_location": 1
+  },
+  {
+    "firstname": "Murekezi",
+    "lastname": "Roxanne",
+    "phonenumber": "+1 (927) 455-3349",
+    "location": "Kicukiro",
+    "distance_within_location": 2
+  },
+  {
+    "firstname": "Rukundo",
+    "lastname": "Gilbert",
+    "phonenumber": "+1 (877) 484-2433",
+    "location": "Nyamirambo",
+    "distance_within_location": 6
+  },
+  {
+    "firstname": "Janelle",
+    "lastname": "Donovan",
+    "phonenumber": "+1 (967) 485-3237",
+    "location": "Kicukiro",
+    "distance_within_location": 3
+  },
+  {
+    "firstname": "Sanchez",
+    "lastname": "Battle",
+    "phonenumber": "+1 (891) 462-2540",
+    "location": "Kanombe",
+    "distance_within_location": 8
+  },
+  {
+    "firstname": "Tillman",
+    "lastname": "Mcguire",
+    "phonenumber": "+1 (844) 478-3468",
+    "location": "Remera",
+    "distance_within_location": 3
+  },
+  {
+    "firstname": "Usanase",
+    "lastname": "Lara",
+    "phonenumber": "+1 (816) 513-3695",
+    "location": "KCT",
+    "distance_within_location": 7
+  },
+  {
+    "firstname": "Tami",
+    "lastname": "Brock",
+    "phonenumber": "+1 (990) 530-3946",
+    "location": "Kagugu",
+    "distance_within_location": 5
+  },
+  {
+    "firstname": "Kabanda",
+    "lastname": "Pauline",
+    "phonenumber": "+1 (876) 427-2466",
+    "location": "Kicukiro",
+    "distance_within_location": 6
+  },
+  {
+    "firstname": "Mwizerwa",
+    "lastname": "Jean Baptiste",
+    "phonenumber": "+1 (919) 598-3093",
+    "location": "KCT",
+    "distance_within_location": 10
+  }
+]
