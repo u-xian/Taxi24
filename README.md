@@ -2,23 +2,23 @@
 
 Taxi24 is an application that holds a set of APIs that other companies can use to manage their fleet of drivers and allocate drivers to passengers.
 
-## How it works
+## Features
 
-APIs provided are categorized as :
+- **Drivers**
+  - Get a list of all drivers
+  - Get a list of all available drivers
+  - Get a list of all available drivers within 3 km of a specific location
+  - Get a specific driver by ID
 
-- Drivers
-  _ Get a list of all drivers
-  _ Get a list of all available drivers
-  _ Get a list of all available drivers within 3km for a specific location
-  _ Get a specific driver by ID
+- **Trips**
+  - Create a new trip by assigning a driver to a rider
+  - Complete a trip
+  - Get a list of all active trips
 
-- Trip
-  _ Create a new Trip request by assigning a driver to a rider
-  _ Complete a trip \* Get a list of all active Trips
-
-- Riders
-  _ Get a list of all riders
-  _ Get a specific rider by ID \* For a specific driver, get a list of the 3 closest drivers
+- **Riders**
+  - Get a list of all riders
+  - Get a specific rider by ID
+  - For a specific rider, get a list of the 3 closest drivers
 
 ## Technologies
 
