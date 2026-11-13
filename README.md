@@ -24,26 +24,36 @@ APIs provided are categorized as :
 
 1. Nodejs
 2. Express
-3. Sequelize
+3. Sequelize & Sequelize-cli
 4. PostgreSQL
 
 ## Installation
 
-- Ensure you have the nodejs installed then you can clone this repository in your local machine.
+- Ensure you have the Nodejs and Postgresql DB installed then you can clone this repository in your local machine.
 
-- Download and install Postgresql DB with all default settings , when prompted to give root password use 123456
-- Use any Database GUI to connect to postgresql and create a new DB named taxi24 with owner postgres
+### 1. Install all depedencies
 
-- **npm install -g sequelize-cli** this package will help to run migrations and seed to database
+```
+npm install
+```
 
-- install packages :  
-  --> **npm install** to install all depedencies
+### 2. Copy .env.example .env to get environment variables required and edit .env with actual database password
 
-- Run migrations
-  --> npx sequelize-cli db:migrate
+```
+cp .env.example .env
+```
 
-- Run seeds
-  --> npx sequelize-cli db:seed:all
+### 3. Run the command below to create database, run migrations and seeds
+
+```
+npm run db:setup
+```
+
+### 4. Run the App
+
+```
+npm start
+```
 
 ## API EndPoints
 

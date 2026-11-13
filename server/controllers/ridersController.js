@@ -44,6 +44,7 @@ const ridersController = {
       },
       where: { id: req.params.riderId },
     });
+    if (!rider) return res.status(404).send("Rider  not found");
 
     const drivers = await Drivers.findAll({
       where: {
@@ -53,10 +54,13 @@ const ridersController = {
           [Op.lte]: rider.dataValues.distance_within_location,
         },
       },
+      order: [
+        ["distance_within_location", "ASC"],
+        ["id", "ASC"],
+      ],
+      limit: 3,
     });
-
-    if (!rider) return res.status(404).send("Rider  not found");
-    if (!drivers) return res.status(404).send("No drivers  found");
+    if (drivers.length === 0) return res.status(404).send("No drivers  found");
     res.status(200).json(drivers);
   },
 
