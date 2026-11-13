@@ -20,12 +20,15 @@ Taxi24 is an application that holds a set of APIs that other companies can use t
   - Get a specific rider by ID
   - For a specific rider, get a list of the 3 closest drivers
 
-## Technologies
+## Tech stack
 
-1. Nodejs
-2. Express
-3. Sequelize & Sequelize-cli
-4. PostgreSQL
+- Node.js
+- Express
+- Sequelize and sequelize-cli
+- PostgreSQL
+- dotenv, for environment variables
+- Joi, for request validation
+- Jest and Supertest, for tests
 
 ## Installation
 
