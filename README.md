@@ -37,7 +37,7 @@ APIs provided are categorized as :
 npm install
 ```
 
-### 2. Copy .env.example .env to get environment variables required and edit .env with actual database password
+### 2. Copy .env.example .env to get environment variables required and edit .env with actual database username and password
 
 ```
 cp .env.example .env
