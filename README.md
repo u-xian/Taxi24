@@ -57,7 +57,6 @@ npm start
 
 ## API EndPoints
 
-<h3>ENDPOINTS</h3>
 <hr>
 <table>
   <tr>
@@ -112,7 +111,7 @@ npm start
       <td>Complete Trip</td>
   </tr>
   <tr>
-    <td colspan="3">Trips</td>
+    <td colspan="3">Riders</td>
   </tr>
   <tr>
       <td>Get</td>
