@@ -1,15 +1,17 @@
+require("dotenv").config();
+
 const Trips = require("../models").Trips;
-const { validate } = require("../models/trips");
+const { validate, validateCompletion } = require("../models/trips");
 const generateInvoiceNumber = require("../common/generateInvoiceNumber");
 
 const tripsController = {
   create: async (req, res) => {
-    const { error } = validate(req.body);
+    const { error, value } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
     const trip = await Trips.create({
-      driverId: req.body.driverId,
-      riderId: req.body.riderId,
+      driverId: value.driverId,
+      riderId: value.riderId,
       trip_status: "active",
       complete_distance: 0,
     });
@@ -37,29 +39,28 @@ const tripsController = {
   },
 
   completeTrip: async (req, res) => {
-    const price_unit = 1000;
-    const amount = price_unit * Number(req.body.complete_distance);
-    let trip = await Trips.findByPk(req.params.tripId);
-    if (!trip) return res.status(404).send("trip  not found");
-    trip.update(req.body, { fields: Object.keys(req.body) });
+    const { error, value } = validateCompletion(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
 
-    trip.update({
+    const trip = await Trips.findByPk(req.params.tripId);
+    if (!trip) return res.status(404).send("trip  not found");
+
+    await trip.update({
       invoicenumber: generateInvoiceNumber(),
       trip_status: "completed",
-      complete_distance: req.body.complete_distance,
-      unit_price: price_unit,
-      total_amount: amount,
-      paymentMethod: req.body.paymentMethod,
+      complete_distance: value.complete_distance,
+      unit_price: process.env.TRIP_PRICE_UNIT,
+      total_amount: process.env.TRIP_PRICE_UNIT * value.complete_distance,
+      paymentMethod: value.paymentMethod,
     });
 
-    trip = await trip.save();
     res.status(200).json(trip);
   },
 
   delete: async (req, res) => {
-    let trip = await Trips.findByPk(req.params.tripId);
+    const trip = await Trips.findByPk(req.params.tripId);
     if (!trip) return res.status(404).send("trip  not found");
-    trip.destroy();
+    await trip.destroy();
     res.status(200).json("trip deleted");
   },
 };

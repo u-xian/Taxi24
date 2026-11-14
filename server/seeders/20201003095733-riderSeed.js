@@ -4,12 +4,23 @@ const { faker } = require("@faker-js/faker");
 
 const COUNT = 50;
 
+// Seed everyone within 10 km of central Kigali so distance searches return results.
+const CITY_CENTER = [-1.9441, 30.0619]; // [latitude, longitude]
+const randomCoordinates = () => {
+  const [latitude, longitude] = faker.location.nearbyGPSCoordinate({
+    origin: CITY_CENTER,
+    radius: 10,
+    isMetric: true,
+  });
+  return { latitude, longitude };
+};
+
 const ridersdata = Array.from({ length: COUNT }, () => ({
   firstname: faker.person.firstName(),
   lastname: faker.person.lastName(),
   phonenumber: faker.phone.number(),
   location: faker.location.city(),
-  distance_within_location: faker.number.int({ min: 1, max: 5 }),
+  ...randomCoordinates(),
   createdAt: new Date(),
   updatedAt: new Date(),
 }));
@@ -23,7 +34,8 @@ module.exports = {
         lastname: r.lastname,
         phonenumber: r.phonenumber,
         location: r.location,
-        distance_within_location: r.distance_within_location,
+        latitude: r.latitude,
+        longitude: r.longitude,
         createdAt: r.createdAt,
         updatedAt: r.updatedAt,
       });

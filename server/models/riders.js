@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
       lastname: DataTypes.STRING,
       phonenumber: DataTypes.STRING,
       location: DataTypes.STRING,
-      distance_within_location: DataTypes.INTEGER,
+      latitude: DataTypes.DOUBLE,
+      longitude: DataTypes.DOUBLE,
       deletedAt: DataTypes.DATE,
     },
     {
@@ -33,9 +34,10 @@ function validateRider(rider) {
   const schema = Joi.object({
     firstname: Joi.string().min(2).max(50).required(),
     lastname: Joi.string().min(2).max(50).required(),
-    phonenumber: Joi.number().integer().required(),
+    phonenumber: Joi.string().min(2).max(50).required(),
     location: Joi.string().min(2).max(50).required(),
-    distance_within_location: Joi.number().integer().required(),
+    latitude: Joi.number().min(-90).max(90).required(),
+    longitude: Joi.number().min(-180).max(180).required(),
   });
 
   return schema.validate(rider);

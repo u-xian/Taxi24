@@ -43,4 +43,15 @@ function validateTrip(trip) {
   return schema.validate(trip);
 }
 
+// Body for PUT /trips/:tripId (completing a trip)
+function validateTripCompletion(body) {
+  const schema = Joi.object({
+    complete_distance: Joi.number().integer().min(0).required(),
+    paymentMethod: Joi.string().min(2).max(50),
+  });
+
+  return schema.validate(body);
+}
+
 module.exports.validate = validateTrip;
+module.exports.validateCompletion = validateTripCompletion;

@@ -1,18 +1,19 @@
 const Drivers = require("../models").Drivers;
-const { validate } = require("../models/drivers");
+const { validate, validateLocationQuery } = require("../models/drivers");
 
 const driversController = {
   create: async (req, res) => {
-    const { error } = validate(req.body);
+    const { error, value } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
     const driver = await Drivers.create({
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      phonenumber: req.body.phonenumber,
+      firstname: value.firstname,
+      lastname: value.lastname,
+      phonenumber: value.phonenumber,
       availability: false,
-      nearest_location: req.body.nearest_location,
-      distance_within_location: req.body.distance_within_location,
+      nearest_location: value.nearest_location,
+      latitude: value.latitude,
+      longitude: value.longitude,
     });
 
     if (!driver) return res.status(404).send("driver  not found");
@@ -37,41 +38,41 @@ const driversController = {
     res.status(200).json(drivers);
   },
 
+  // GET /drivers/bylocation?latitude=..&longitude=..[&radius=km, default 3]
   listDriverByLocation: async (req, res) => {
-    const drivers = await Drivers.findAll({
-      where: {
-        nearest_location: req.body.nearest_location,
-        distance_within_location: req.body.distance_within_location,
-      },
+    const { error, value } = validateLocationQuery(req.query);
+    if (error) return res.status(400).send(error.details[0].message);
+
+    const drivers = await Drivers.findAvailableNear({
+      latitude: value.latitude,
+      longitude: value.longitude,
+      radiusKm: value.radius,
     });
-    if (!drivers) return res.status(404).send("drivers  not found");
     res.status(200).json(drivers);
   },
 
   update: async (req, res) => {
-    const { error } = validate(req.body);
+    const { error, value } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    let driver = await Drivers.findByPk(req.params.driverId);
+    const driver = await Drivers.findByPk(req.params.driverId);
     if (!driver) return res.status(404).send("driver  not found");
-    driver.update(req.body, { fields: Object.keys(req.body) });
+    await driver.update(value);
     res.status(200).json(driver);
   },
 
   updateAvailability: async (req, res) => {
-    let driver = await Drivers.findByPk(req.params.driverId);
+    const driver = await Drivers.findByPk(req.params.driverId);
     if (!driver) return res.status(404).send("trip  not found");
 
-    driver.update({ availability: true });
-
-    driver = await driver.save();
+    await driver.update({ availability: true });
     res.status(200).json(driver);
   },
 
   delete: async (req, res) => {
-    let driver = await Drivers.findByPk(req.params.driverId);
+    const driver = await Drivers.findByPk(req.params.driverId);
     if (!driver) return res.status(404).send("driver  not found");
-    driver.destroy();
+    await driver.destroy();
     res.status(200).json("driver deleted");
   },
 };

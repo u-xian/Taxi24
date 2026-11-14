@@ -1,18 +1,25 @@
 const express = require("express");
+const asyncHandler = require("../common/asyncHandler");
+const validateIdParam = require("../common/validateIdParam");
 const tripsCrontroller = require("../controllers/tripsController");
 
 const tripsRoute = express.Router();
 
-tripsRoute.get("/trips", tripsCrontroller.list);
+tripsRoute.param("tripId", validateIdParam);
 
-tripsRoute.get("/trips/activetrips", tripsCrontroller.listActiveTrips);
+tripsRoute.get("/trips", asyncHandler(tripsCrontroller.list));
 
-tripsRoute.get("/trips/:tripId", tripsCrontroller.listById);
+tripsRoute.get(
+  "/trips/activetrips",
+  asyncHandler(tripsCrontroller.listActiveTrips)
+);
 
-tripsRoute.post("/trips", tripsCrontroller.create);
+tripsRoute.get("/trips/:tripId", asyncHandler(tripsCrontroller.listById));
 
-tripsRoute.put("/trips/:tripId", tripsCrontroller.completeTrip);
+tripsRoute.post("/trips", asyncHandler(tripsCrontroller.create));
 
-tripsRoute.delete("/trips/:tripId", tripsCrontroller.delete);
+tripsRoute.put("/trips/:tripId", asyncHandler(tripsCrontroller.completeTrip));
+
+tripsRoute.delete("/trips/:tripId", asyncHandler(tripsCrontroller.delete));
 
 module.exports = tripsRoute;

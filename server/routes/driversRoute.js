@@ -1,28 +1,44 @@
 const express = require("express");
+const asyncHandler = require("../common/asyncHandler");
+const validateIdParam = require("../common/validateIdParam");
 const driversCrontroller = require("../controllers/driversController");
 
 const driversRoute = express.Router();
 
-driversRoute.get("/drivers", driversCrontroller.list);
+driversRoute.param("driverId", validateIdParam);
 
-driversRoute.get("/drivers/available", driversCrontroller.listAvailDrivers);
+driversRoute.get("/drivers", asyncHandler(driversCrontroller.list));
+
+driversRoute.get(
+  "/drivers/available",
+  asyncHandler(driversCrontroller.listAvailDrivers)
+);
 
 driversRoute.get(
   "/drivers/bylocation",
-  driversCrontroller.listDriverByLocation
+  asyncHandler(driversCrontroller.listDriverByLocation)
 );
 
-driversRoute.get("/drivers/:driverId", driversCrontroller.listById);
+driversRoute.get(
+  "/drivers/:driverId",
+  asyncHandler(driversCrontroller.listById)
+);
 
-driversRoute.post("/drivers", driversCrontroller.create);
+driversRoute.post("/drivers", asyncHandler(driversCrontroller.create));
 
-driversRoute.put("/drivers/:driverId", driversCrontroller.update);
+driversRoute.put(
+  "/drivers/:driverId",
+  asyncHandler(driversCrontroller.update)
+);
 
 driversRoute.put(
   "/drivers/availability/:driverId",
-  driversCrontroller.updateAvailability
+  asyncHandler(driversCrontroller.updateAvailability)
 );
 
-driversRoute.delete("/drivers/:driverId", driversCrontroller.delete);
+driversRoute.delete(
+  "/drivers/:driverId",
+  asyncHandler(driversCrontroller.delete)
+);
 
 module.exports = driversRoute;

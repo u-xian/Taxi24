@@ -82,6 +82,11 @@ npm start
   </tr>
   <tr>
       <td>GET</td>
+      <td>/api/v1/drivers/bylocation?latitude=&longitude=&radius=</td>
+      <td>Get available drivers within <code>radius</code> km of a location (default 3 km, max 50), nearest first</td>
+  </tr>
+  <tr>
+      <td>GET</td>
       <td>/api/v1/drivers/:driverId</td>
       <td>Get a driver by ID </td>
   </tr>
@@ -91,7 +96,7 @@ npm start
   <tr>
       <td>GET</td>
       <td>/api/v1/trips</td>
-      <td>Get active trips</td>
+      <td>Get all trips</td>
   </tr>
   <tr>
       <td>POST</td>
@@ -119,7 +124,7 @@ npm start
   <tr>
       <td>Get</td>
       <td>/api/v1/riders/closedriver/:riderId</td>
-      <td>Get closest driver by rider ID</td>
+      <td>Get the 3 available drivers closest to the rider</td>
   </tr>
 </table>
 <br/>
