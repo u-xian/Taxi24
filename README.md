@@ -77,23 +77,13 @@ npm start
   </tr>
   <tr>
       <td>GET</td>
-      <td>/api/v1/driversavail</td>
+      <td>/api/v1/drivers/available</td>
       <td>Get available drivers</td>
   </tr>
   <tr>
       <td>GET</td>
       <td>/api/v1/drivers/:driverId</td>
       <td>Get a driver by ID </td>
-  </tr>
-  <tr>
-      <td>GET</td>
-      <td>/api/v1/users/requests/:requestId</td>
-      <td>Get a request</td>
-  </tr>
-  <tr>
-      <td>GET</td>
-      <td>/api/v1/drivers/location/:distance/:location</td>
-      <td>Get driver by location</td>
   </tr>
   <tr>
     <td colspan="3">Trips</td>
@@ -110,7 +100,7 @@ npm start
   </tr>
   <tr>
       <td>PUT</td>
-      <td>/api/v1/trips</td>
+      <td>/api/v1/trips/:tripId</td>
       <td>Complete Trip</td>
   </tr>
   <tr>
@@ -128,7 +118,7 @@ npm start
   </tr>
   <tr>
       <td>Get</td>
-      <td>/api/v1/riders/closestdriver/:riderId</td>
+      <td>/api/v1/riders/closedriver/:riderId</td>
       <td>Get closest driver by rider ID</td>
   </tr>
 </table>
