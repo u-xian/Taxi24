@@ -1,5 +1,19 @@
 "use strict";
-const driversdata = require("./driversData.json");
+
+const { faker } = require("@faker-js/faker");
+
+const COUNT = 50;
+
+const driversdata = Array.from({ length: COUNT }, () => ({
+  firstname: faker.person.firstName(),
+  lastname: faker.person.lastName(),
+  phonenumber: faker.phone.number(),
+  availability: faker.datatype.boolean(),
+  nearest_location: faker.location.city(),
+  distance_within_location: faker.number.int({ min: 1, max: 5 }),
+  createdAt: new Date(),
+  updatedAt: new Date(),
+}));
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -12,8 +26,8 @@ module.exports = {
         availability: d.availability,
         nearest_location: d.nearest_location,
         distance_within_location: d.distance_within_location,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        createdAt: d.createdAt,
+        updatedAt: d.updatedAt,
       });
     });
     return await queryInterface.bulkInsert("Drivers", drivers);
